@@ -1,11 +1,13 @@
+import DrawerMenu from "@/components/DrawerMenu";
+import { ThemeProvider, useTheme } from "@/hooks/use-theme";
 import {
   Inter_400Regular,
   Inter_600SemiBold,
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
-import { ThemeProvider, useTheme } from "@/hooks/use-theme";
 import { useFonts } from "expo-font";
-import { ThemeProvider as NavigationThemeProvider, Stack } from "expo-router";
+import { ThemeProvider as NavigationThemeProvider } from "expo-router";
+import { Drawer } from "expo-router/drawer";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -17,7 +19,15 @@ function RootNavigator() {
 
   return (
     <NavigationThemeProvider value={theme}>
-      <Stack />
+      <Drawer
+        drawerContent={(props) => <DrawerMenu {...props} />}
+        screenOptions={{
+          headerShown: false,
+          drawerType: "slide",
+        }}
+      >
+        <Drawer.Screen name="(stack)" />
+      </Drawer>
     </NavigationThemeProvider>
   );
 }

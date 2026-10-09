@@ -31,9 +31,4 @@ const styles = StyleSheet.create({
   tabLabel: { fontSize: 10, fontFamily: "Inter_600SemiBold" },
   footnote: { fontSize: 13, fontFamily: "Inter_400Regular" },
   body: { fontSize: 15, fontFamily: "Inter_400Regular" },
-  wordmark: {
-    fontSize: 48,
-    fontFamily: "BricolageGrotesque_700Bold",
-    letterSpacing: -1.5,
-  },
 });

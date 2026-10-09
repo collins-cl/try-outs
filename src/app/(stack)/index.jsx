@@ -1,26 +1,22 @@
+import Screen from "@/components/Screen";
 import ThemedText from "@/components/Themedtext";
 import { useTheme } from "@/hooks/use-theme";
-import { Stack } from "expo-router";
+import { useNavigation } from "expo-router/react-navigation";
 import { ScrollView, StyleSheet } from "react-native";
 
 const Home = () => {
   const { colors } = useTheme();
+  const navigation = useNavigation();
 
   return (
-    <>
-      <Stack.Screen options={{ headerTitle: "Home" }} />
-
+    <Screen rightToolbar>
       <ScrollView
-        contentContainerStyle={styles.content}
-        style={{ backgroundColor: colors.background }}
+        showsVerticalScrollIndicator={false}
+        contentInsetAdjustmentBehavior="automatic"
       >
-        <ThemedText type="title">Hello</ThemedText>
-
-        <ThemedText colorName="textMuted">
-          Edit src/app/index.jsx to get started.
-        </ThemedText>
+        <ThemedText>Hell</ThemedText>
       </ScrollView>
-    </>
+    </Screen>
   );
 };
 
