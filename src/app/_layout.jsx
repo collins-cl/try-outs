@@ -10,12 +10,15 @@ import { ThemeProvider as NavigationThemeProvider } from "expo-router";
 import { Drawer } from "expo-router/drawer";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { useWindowDimensions } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
 function RootNavigator() {
   const theme = useTheme();
+  const { colors } = useTheme();
+  const { width } = useWindowDimensions();
 
   return (
     <NavigationThemeProvider value={theme}>
@@ -23,7 +26,16 @@ function RootNavigator() {
         drawerContent={(props) => <DrawerMenu {...props} />}
         screenOptions={{
           headerShown: false,
-          drawerType: "slide",
+          drawerType: "back",
+          swipeEdgeWidth: width,
+          drawerStyle: {
+            width: "75%",
+            backgroundColor: colors.background,
+          },
+          sceneStyle: {
+            backgroundColor: colors.background,
+          },
+          overlayColor: "transparent",
         }}
       >
         <Drawer.Screen name="(stack)" />

@@ -57,7 +57,7 @@ export const DarkTheme = {
     notification: "#FF453A",
 
     surface: "#212225",
-    surfaceSelected: "#2E3135",
+    surfaceSelected: "#26292c9c",
     surfaceHover: "#2A2C30",
 
     textSecondary: "#B0B4BA",
