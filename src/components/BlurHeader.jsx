@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 export default function BlurHeader({
     children,
     height = 44,
-    blurIntensity = 3,
+    blurIntensity = 5,
     top = false,
     bottom = false,
 }) {

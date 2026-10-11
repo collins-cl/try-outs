@@ -1,13 +1,11 @@
-import { useTheme } from "@/hooks/use-theme";
-import { usePathname, useRouter } from "expo-router";
 import { useDrawerProgress } from "expo-router/drawer";
-import { Pressable, ScrollView, StyleSheet } from "react-native";
+import { Pressable, ScrollView } from "react-native";
 import Animated, {
     interpolate,
     useAnimatedStyle,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import BlurHeader from "./BlurviewHeader";
+import BlurHeader from "./BlurHeader";
 import ThemedText from "./Themedtext";
 
 const ITEMS = [
@@ -15,11 +13,10 @@ const ITEMS = [
     { label: "Image", href: "/image" },
 ];
 
+const HEIGHT = 44;
+
 const DrawerMenu = (props) => {
-    const pathname = usePathname();
-    const { colors } = useTheme();
     const progress = useDrawerProgress();
-    const router = useRouter();
     const insets = useSafeAreaInsets();
 
     const scaleDrawerStyle = useAnimatedStyle(() => ({
@@ -35,11 +32,17 @@ const DrawerMenu = (props) => {
                 scaleDrawerStyle,
             ]}
         >
-            <BlurHeader top>
-                <ThemedText>Helo</ThemedText>
+            <BlurHeader top height={HEIGHT}>
+                <ThemedText type="title">Koledev.</ThemedText>
             </BlurHeader>
 
-            <ScrollView contentContainerStyle={{ paddingTop: 60 }}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                    paddingTop: insets.top + HEIGHT * 1.25,
+                    paddingHorizontal: 16,
+                }}
+            >
                 {ITEMS.map((item) => (
                     <Pressable key={item.label}>
                         <ThemedText>{item.label}</ThemedText>
@@ -81,28 +84,11 @@ const DrawerMenu = (props) => {
                 ))}
             </ScrollView>
 
-            <BlurHeader bottom>
+            <BlurHeader bottom height={HEIGHT}>
                 <ThemedText>Helo</ThemedText>
             </BlurHeader>
         </Animated.View>
     );
 };
 
-// const DrawerHeader = () => {
-//     return (
-//         <BlurHeader top bottom>
-//             <ThemedText>Helo</ThemedText>
-//         </BlurHeader>
-//     );
-// };
-
 export default DrawerMenu;
-
-const styles = StyleSheet.create({
-    headerButton: {
-        width: 36,
-        height: 36,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-});
