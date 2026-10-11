@@ -24,7 +24,6 @@ export default function BlurHeader({
                         : height + insets.bottom + 20,
                     top: top && 0,
                     bottom: bottom && 0,
-                    backgroundColor: "blue",
                 },
             ]}
             pointerEvents="box-none"
@@ -49,7 +48,6 @@ export default function BlurHeader({
                         height: height + 12,
                         marginTop: top && insets.top,
                         marginBottom: bottom && insets.bottom,
-                        backgroundColor: "red",
                     },
                 ]}
             >

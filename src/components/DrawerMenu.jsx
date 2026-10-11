@@ -8,13 +8,11 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import BlurHeader from "./BlurHeader";
+import Icon from "./Icon";
 import IconButton from "./IconButton";
 import ThemedText from "./Themedtext";
 
-const ITEMS = [
-    { label: "Home", href: "/" },
-    { label: "Image", href: "/image" },
-];
+const DRAWER_MAIN_ITEMS = [{ label: "Images", href: "/", icon: "sketch" }];
 
 const HEIGHT = 44;
 
@@ -29,7 +27,7 @@ const DrawerMenu = (props) => {
         transform: [{ scale: interpolate(progress.value, [0, 1], [0.98, 1]) }],
     }));
 
-    const homeURL = ITEMS.map((el) => el.href);
+    const homeURL = DRAWER_MAIN_ITEMS.map((el) => el.href);
 
     const go = (href) => {
         props.navigation.closeDrawer();
@@ -48,7 +46,7 @@ const DrawerMenu = (props) => {
         >
             <BlurHeader top height={HEIGHT}>
                 <Pressable onPress={() => go(homeURL[0])}>
-                    <ThemedText type="title">Koledev.</ThemedText>
+                    <ThemedText type="title">Kole.</ThemedText>
                 </Pressable>
             </BlurHeader>
 
@@ -60,7 +58,7 @@ const DrawerMenu = (props) => {
                     gap: 6,
                 }}
             >
-                {ITEMS.map((item) => {
+                {DRAWER_MAIN_ITEMS.map((item) => {
                     const pathname = item.href === pathName;
                     return (
                         <Pressable
@@ -69,13 +67,24 @@ const DrawerMenu = (props) => {
                             style={({ pressed }) => [
                                 {
                                     backgroundColor: pathname
-                                        ? colors.surfaceSelected
+                                        ? colors.card
                                         : null,
                                 },
                                 styles.drawerItemList,
                             ]}
                         >
-                            <ThemedText type="regular">{item.label}</ThemedText>
+                            {item.icon && (
+                                <Icon
+                                    name={item.icon}
+                                    size={22}
+                                    tintColor={colors.text}
+                                    weight="bold"
+                                />
+                            )}
+
+                            <ThemedText type="semiBold">
+                                {item.label}
+                            </ThemedText>
                         </Pressable>
                     );
                 })}
@@ -97,7 +106,9 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 50,
         borderRadius: 12,
-        justifyContent: "center",
         paddingHorizontal: 10,
+        flexDirection: "row",
+        gap: 10,
+        alignItems: "center",
     },
 });
