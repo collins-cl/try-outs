@@ -6,19 +6,22 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function BlurHeader({
     children,
-    height = 60,
+    height = 44,
     blurIntensity = 3,
+    top = false,
+    bottom = false,
 }) {
     const insets = useSafeAreaInsets();
-    const { mode, colors } = useTheme();
-    const backgroundColor = colors.background;
+    const { colors } = useTheme();
 
     return (
         <View
             style={[
                 styles.container,
                 {
-                    height: height + insets.top,
+                    height: top ? height + insets.top : height + insets.bottom,
+                    top: top && 0,
+                    bottom: bottom && 0,
                 },
             ]}
             pointerEvents="box-none"
@@ -31,7 +34,7 @@ export default function BlurHeader({
 
             <LinearGradient
                 colors={colors.gradient}
-                locations={[0, 0.35, 0.72, 1]}
+                locations={top ? [0, 0.35, 0.72, 1] : [1, 0.72, 0.35, 0]}
                 style={StyleSheet.absoluteFill}
                 pointerEvents="none"
             />
@@ -41,7 +44,7 @@ export default function BlurHeader({
                     styles.content,
                     {
                         height,
-                        marginTop: insets.top,
+                        marginTop: top ? insets.top : insets.bottom - 34,
                     },
                 ]}
             >
@@ -54,7 +57,6 @@ export default function BlurHeader({
 const styles = StyleSheet.create({
     container: {
         position: "absolute",
-        top: 0,
         left: 0,
         right: 0,
         zIndex: 100,

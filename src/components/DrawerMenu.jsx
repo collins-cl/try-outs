@@ -1,5 +1,4 @@
 import { useTheme } from "@/hooks/use-theme";
-import { LinearGradient } from "expo-linear-gradient";
 import { usePathname, useRouter } from "expo-router";
 import { useDrawerProgress } from "expo-router/drawer";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
@@ -36,19 +35,9 @@ const DrawerMenu = (props) => {
                 scaleDrawerStyle,
             ]}
         >
-            <LinearGradient
-                colors={colors.gradient}
-                locations={[0, 0.35, 0.72, 1]}
-                pointerEvents="none"
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    height: 120,
-                    width: "100%",
-                }}
-            />
-            <DrawerHeader />
+            <BlurHeader top>
+                <ThemedText>Helo</ThemedText>
+            </BlurHeader>
 
             <ScrollView contentContainerStyle={{ paddingTop: 60 }}>
                 {ITEMS.map((item) => (
@@ -91,17 +80,21 @@ const DrawerMenu = (props) => {
                     </Pressable>
                 ))}
             </ScrollView>
+
+            <BlurHeader bottom>
+                <ThemedText>Helo</ThemedText>
+            </BlurHeader>
         </Animated.View>
     );
 };
 
-const DrawerHeader = () => {
-    return (
-        <BlurHeader>
-            <ThemedText>Helo</ThemedText>
-        </BlurHeader>
-    );
-};
+// const DrawerHeader = () => {
+//     return (
+//         <BlurHeader top bottom>
+//             <ThemedText>Helo</ThemedText>
+//         </BlurHeader>
+//     );
+// };
 
 export default DrawerMenu;
 
