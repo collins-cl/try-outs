@@ -1,5 +1,6 @@
+import { usePathname, useRouter } from "expo-router";
 import { useDrawerProgress } from "expo-router/drawer";
-import { Pressable, ScrollView } from "react-native";
+import { Pressable, ScrollView, StyleSheet } from "react-native";
 import Animated, {
     interpolate,
     useAnimatedStyle,
@@ -18,11 +19,18 @@ const HEIGHT = 44;
 const DrawerMenu = (props) => {
     const progress = useDrawerProgress();
     const insets = useSafeAreaInsets();
+    const pathName = usePathname();
+    const router = useRouter();
 
     const scaleDrawerStyle = useAnimatedStyle(() => ({
         transform: [{ scale: interpolate(progress.value, [0, 1], [0.98, 1]) }],
     }));
 
+    const go = (href) => {
+        props.navigation.closeDrawer();
+        if (href === pathName) return;
+        router.replace(href);
+    };
     return (
         <Animated.View
             style={[
@@ -40,48 +48,25 @@ const DrawerMenu = (props) => {
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
                     paddingTop: insets.top + HEIGHT * 1.25,
-                    paddingHorizontal: 16,
+                    paddingHorizontal: 8,
+                    gap: 6,
                 }}
             >
-                {ITEMS.map((item) => (
-                    <Pressable key={item.label}>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                        <ThemedText>{item.label}</ThemedText>
-                    </Pressable>
-                ))}
+                {ITEMS.map((item) => {
+                    const pathname = item.href === pathName;
+                    return (
+                        <Pressable
+                            key={item.label}
+                            onPress={() => go(item.href)}
+                            style={({ pressed }) => [
+                                { backgroundColor: pathname ? "red" : "green" },
+                                styles.drawerItemList,
+                            ]}
+                        >
+                            <ThemedText>{item.label}</ThemedText>
+                        </Pressable>
+                    );
+                })}
             </ScrollView>
 
             <BlurHeader bottom height={HEIGHT}>
@@ -92,3 +77,13 @@ const DrawerMenu = (props) => {
 };
 
 export default DrawerMenu;
+
+const styles = StyleSheet.create({
+    drawerItemList: {
+        width: "100%",
+        height: 50,
+        borderRadius: 12,
+        justifyContent: "center",
+        paddingHorizontal: 10,
+    },
+});

@@ -27,8 +27,23 @@ const StackLayout = () => {
                 screenOptions={{
                     headerTransparent: true,
                     headerTitle: "",
+                    // animation: "fade",
                 }}
-            />
+            >
+                <Stack.Screen name="index" options={{ animation: "none" }} />
+                <Stack.Screen name="image" options={{ animation: "none" }} />
+
+                <Stack.Screen
+                    name="popover"
+                    options={{
+                        presentation: "formSheet",
+                        sheetAllowedDetents: [0.5, 1], // or "fitToContents"
+                        sheetGrabberVisible: true,
+                        sheetCornerRadius: 24,
+                        // remove animation: "none"
+                    }}
+                />
+            </Stack>
 
             <Animated.View
                 pointerEvents="none"
