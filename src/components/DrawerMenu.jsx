@@ -1,3 +1,4 @@
+import { useTheme } from "@/hooks/use-theme";
 import { usePathname, useRouter } from "expo-router";
 import { useDrawerProgress } from "expo-router/drawer";
 import { Pressable, ScrollView, StyleSheet } from "react-native";
@@ -7,6 +8,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import BlurHeader from "./BlurHeader";
+import IconButton from "./IconButton";
 import ThemedText from "./Themedtext";
 
 const ITEMS = [
@@ -21,16 +23,20 @@ const DrawerMenu = (props) => {
     const insets = useSafeAreaInsets();
     const pathName = usePathname();
     const router = useRouter();
+    const { colors } = useTheme();
 
     const scaleDrawerStyle = useAnimatedStyle(() => ({
         transform: [{ scale: interpolate(progress.value, [0, 1], [0.98, 1]) }],
     }));
+
+    const homeURL = ITEMS.map((el) => el.href);
 
     const go = (href) => {
         props.navigation.closeDrawer();
         if (href === pathName) return;
         router.replace(href);
     };
+
     return (
         <Animated.View
             style={[
@@ -41,7 +47,9 @@ const DrawerMenu = (props) => {
             ]}
         >
             <BlurHeader top height={HEIGHT}>
-                <ThemedText type="title">Koledev.</ThemedText>
+                <Pressable onPress={() => go(homeURL[0])}>
+                    <ThemedText type="title">Koledev.</ThemedText>
+                </Pressable>
             </BlurHeader>
 
             <ScrollView
@@ -59,18 +67,24 @@ const DrawerMenu = (props) => {
                             key={item.label}
                             onPress={() => go(item.href)}
                             style={({ pressed }) => [
-                                { backgroundColor: pathname ? "red" : "green" },
+                                {
+                                    backgroundColor: pathname
+                                        ? colors.surfaceSelected
+                                        : null,
+                                },
                                 styles.drawerItemList,
                             ]}
                         >
-                            <ThemedText>{item.label}</ThemedText>
+                            <ThemedText type="regular">{item.label}</ThemedText>
                         </Pressable>
                     );
                 })}
             </ScrollView>
 
             <BlurHeader bottom height={HEIGHT}>
-                <ThemedText>Helo</ThemedText>
+                <IconButton onPress={() => router.push("/popover")}>
+                    <ThemedText>Hello</ThemedText>
+                </IconButton>
             </BlurHeader>
         </Animated.View>
     );

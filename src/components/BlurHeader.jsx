@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function BlurHeader({
     children,
-    height = 44,
+    height,
     blurIntensity = 5,
     top = false,
     bottom = false,
@@ -19,9 +19,12 @@ export default function BlurHeader({
             style={[
                 styles.container,
                 {
-                    height: top ? height + insets.top : height + insets.bottom,
+                    height: top
+                        ? height + insets.top
+                        : height + insets.bottom + 20,
                     top: top && 0,
                     bottom: bottom && 0,
+                    backgroundColor: "blue",
                 },
             ]}
             pointerEvents="box-none"
@@ -43,8 +46,10 @@ export default function BlurHeader({
                 style={[
                     styles.content,
                     {
-                        height,
-                        marginTop: top ? insets.top : insets.bottom - 34,
+                        height: height + 12,
+                        marginTop: top && insets.top,
+                        marginBottom: bottom && insets.bottom,
+                        backgroundColor: "red",
                     },
                 ]}
             >
@@ -67,5 +72,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        // backgroundColor: "red",
     },
 });
