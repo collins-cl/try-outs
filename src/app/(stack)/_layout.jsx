@@ -37,10 +37,9 @@ const StackLayout = () => {
                     name="popover"
                     options={{
                         presentation: "formSheet",
-                        sheetAllowedDetents: [0.5, 1], // or "fitToContents"
+                        sheetAllowedDetents: [0.5, 1],
                         sheetGrabberVisible: true,
                         sheetCornerRadius: 24,
-                        // remove animation: "none"
                     }}
                 />
             </Stack>

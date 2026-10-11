@@ -54,7 +54,7 @@ export default Home;
 
 const styles = StyleSheet.create({
     content: {
-        padding: 16,
+        paddingHorizontal: 16,
         gap: 16,
     },
 });

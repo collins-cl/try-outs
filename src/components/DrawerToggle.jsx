@@ -6,7 +6,7 @@ import { DrawerActions, useNavigation } from "expo-router/react-navigation";
 import { memo } from "react";
 import { Pressable } from "react-native";
 
-export const DrawerToggle = memo(function DrawerToggle() {
+const DrawerToggle = memo(function DrawerToggle() {
     const { colors } = useTheme();
     const navigation = useNavigation();
 

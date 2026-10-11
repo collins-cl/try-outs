@@ -1,17 +1,26 @@
+import DrawerToggle from "@/components/DrawerToggle";
 import Screen from "@/components/Screen";
 import ThemedText from "@/components/Themedtext";
-import { StyleSheet, View } from "react-native";
+import { usePathname } from "expo-router";
+import { ScrollView, StyleSheet } from "react-native";
 
-const image = () => {
-  return (
-    <Screen>
-      <View>
-        <ThemedText>Hello</ThemedText>
-      </View>
-    </Screen>
-  );
+const Image = () => {
+    const pathName = usePathname();
+    return (
+        <Screen>
+            <DrawerToggle />
+
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentInsetAdjustmentBehavior="automatic"
+                contentContainerStyle={styles.content}
+            >
+                <ThemedText>{pathName}</ThemedText>
+            </ScrollView>
+        </Screen>
+    );
 };
 
-export default image;
+export default Image;
 
 const styles = StyleSheet.create({});
