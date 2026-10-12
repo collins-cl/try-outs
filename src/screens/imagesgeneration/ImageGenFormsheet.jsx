@@ -1,14 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, View } from "react-native";
 
 const ImageGenFormsheet = () => {
-  return (
-    <View>
-      <Text>ImageGenFormsheet</Text>
-    </View>
-  )
-}
+    return (
+        <View>
+            <Text>ImageGenFormsheet</Text>
+        </View>
+    );
+};
 
-export default ImageGenFormsheet
-
-const styles = StyleSheet.create({})
+export default ImageGenFormsheet;

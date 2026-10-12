@@ -12,22 +12,14 @@ const TrendingItem = ({ item }) => {
     return (
         <Pressable
             onPress={() => router.push(`/image/${item.id}`)}
-            style={({ pressed }) => ({
-                width: "48%",
-                height: 220,
-                borderRadius: 20,
-                overflow: "hidden",
-                opacity: pressed && 0.6,
-            })}
+            style={({ pressed }) => (
+                {
+                    opacity: pressed && 0.6,
+                },
+                styles.itemCard
+            )}
         >
-            <View
-                style={{
-                    flex: 1,
-                    paddingHorizontal: 12,
-                    paddingVertical: 16,
-                    justifyContent: "flex-end",
-                }}
-            >
+            <View style={styles.card}>
                 <AnimatedImage
                     entering={FadeIn.duration(150)}
                     source={item.image}
@@ -53,4 +45,18 @@ const TrendingItem = ({ item }) => {
 
 export default TrendingItem;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    itemCard: {
+        width: "48%",
+        height: 220,
+        borderRadius: 20,
+        overflow: "hidden",
+    },
+
+    card: {
+        flex: 1,
+        paddingHorizontal: 12,
+        paddingVertical: 16,
+        justifyContent: "flex-end",
+    },
+});
