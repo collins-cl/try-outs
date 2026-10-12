@@ -27,7 +27,7 @@ function RootNavigator() {
                 screenOptions={{
                     headerShown: false,
                     drawerType: "back",
-                    swipeEdgeWidth: width,
+                    swipeEdgeWidth: width * 0.6,
                     drawerStyle: {
                         width: "75%",
                         backgroundColor: colors.background,

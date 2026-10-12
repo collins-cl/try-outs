@@ -27,7 +27,6 @@ const StackLayout = () => {
                 screenOptions={{
                     headerTransparent: true,
                     headerTitle: "",
-                    // animation: "fade",
                 }}
             >
                 <Stack.Screen name="index" options={{ animation: "none" }} />

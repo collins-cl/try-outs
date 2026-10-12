@@ -2,7 +2,7 @@ import { useTheme } from "@/hooks/use-theme";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const EDGES = ["bottom", "left", "top", "right"];
+const EDGES = ["left", "right"];
 
 const Screen = ({ children }) => {
     const { colors } = useTheme();

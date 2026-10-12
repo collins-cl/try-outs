@@ -1,0 +1,156 @@
+import DrawerToggle from "@/components/DrawerToggle";
+import GlassSurface from "@/components/GlassSurface";
+import Icon from "@/components/Icon";
+import Screen from "@/components/Screen";
+import ThemedText from "@/components/Themedtext";
+import { useTheme } from "@/hooks/use-theme";
+import { Stack, usePathname } from "expo-router";
+import { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { ImageTabSwitch } from "./components/ImageTabSwitch";
+
+const Image = () => {
+    const pathName = usePathname();
+    const { colors } = useTheme();
+    const [infoActive, setInfoActive] = useState(true);
+    const [activeTab, setActiveTab] = useState("trending");
+    return (
+        <Screen>
+            <DrawerToggle />
+            <Stack.Screen options={{ headerTitle: "Image" }} />
+
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentInsetAdjustmentBehavior="automatic"
+                contentContainerStyle={styles.container}
+            >
+                {infoActive && (
+                    <GlassSurface style={styles.infoCard}>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: 16,
+                            }}
+                        >
+                            <Icon
+                                name="library"
+                                tintColor={colors.text}
+                                size={18}
+                            />
+
+                            <View style={{ width: "80%", gap: 6 }}>
+                                <ThemedText type="subtitle">
+                                    Your generated images moved to Library
+                                </ThemedText>
+
+                                <ThemedText
+                                    type="caption"
+                                    colorName="textMuted"
+                                >
+                                    You can now find your generated images in
+                                    the Library tab from the sidebar
+                                </ThemedText>
+                            </View>
+                        </View>
+
+                        <Pressable onPress={() => setInfoActive(false)}>
+                            <Icon
+                                name={"cancel"}
+                                tintColor={colors.text}
+                                size={14}
+                            />
+                        </Pressable>
+                    </GlassSurface>
+                )}
+
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={{
+                        marginTop: 20,
+                    }}
+                    contentContainerStyle={{ gap: 6 }}
+                >
+                    <Pressable
+                        onPress={() => setActiveTab("trending")}
+                        style={[
+                            styles.tabButtons,
+                            {
+                                backgroundColor:
+                                    activeTab === "trending"
+                                        ? colors.surface
+                                        : null,
+                            },
+                        ]}
+                    >
+                        <ThemedText
+                            style={{
+                                color:
+                                    activeTab === "trending"
+                                        ? colors.text
+                                        : colors.textMuted,
+                            }}
+                        >
+                            Trending
+                        </ThemedText>
+                    </Pressable>
+
+                    <Pressable
+                        onPress={() => setActiveTab("templates")}
+                        style={[
+                            styles.tabButtons,
+                            {
+                                backgroundColor:
+                                    activeTab === "templates"
+                                        ? colors.surface
+                                        : null,
+                            },
+                        ]}
+                    >
+                        <ThemedText
+                            style={{
+                                color:
+                                    activeTab === "templates"
+                                        ? colors.text
+                                        : colors.textMuted,
+                            }}
+                        >
+                            Templates
+                        </ThemedText>
+                    </Pressable>
+                </ScrollView>
+
+                <View style={{ marginTop: 20 }}>
+                    <ImageTabSwitch tab={activeTab} />
+                </View>
+            </ScrollView>
+        </Screen>
+    );
+};
+
+export default Image;
+
+const styles = StyleSheet.create({
+    container: {
+        paddingHorizontal: 16,
+        marginTop: 10,
+    },
+
+    infoCard: {
+        borderRadius: 16,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 16,
+        paddingVertical: 20,
+    },
+
+    tabButtons: {
+        paddingHorizontal: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 22.5,
+        height: 40,
+    },
+});
