@@ -99,3 +99,5 @@ export const TrendingDataRoute = [
         image: Y2KDigicam,
     },
 ];
+
+export const ReverseTrendingDataRoute = [...TrendingDataRoute].reverse();

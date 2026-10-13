@@ -19,7 +19,12 @@ const DrawerToggle = memo(function DrawerToggle() {
                         navigation.dispatch(DrawerActions.toggleDrawer())
                     }
                 >
-                    <HugeiconsIcon icon={MenuTwoLineIcon} color={colors.text} />
+                    <HugeiconsIcon
+                        icon={MenuTwoLineIcon}
+                        color={colors.text}
+                        size={30}
+                        strokeWidth={2}
+                    />
                 </Pressable>
             </Stack.Toolbar.View>
         </Stack.Toolbar>

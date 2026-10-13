@@ -2,9 +2,7 @@ import ThemedText from "@/components/Themedtext";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
-import { createAnimatedComponent, FadeIn } from "react-native-reanimated";
-
-const AnimatedImage = createAnimatedComponent(Image);
+import Animated, { FadeIn } from "react-native-reanimated";
 
 const TrendingItem = ({ item }) => {
     const router = useRouter();
@@ -20,14 +18,16 @@ const TrendingItem = ({ item }) => {
             )}
         >
             <View style={styles.card}>
-                <AnimatedImage
+                <Animated.View
                     entering={FadeIn.duration(150)}
-                    source={item.image}
-                    contentFit="cover"
-                    style={{
-                        ...StyleSheet.absoluteFill,
-                    }}
-                />
+                    style={StyleSheet.absoluteFill}
+                >
+                    <Image
+                        source={item.image}
+                        contentFit="cover"
+                        style={StyleSheet.absoluteFill}
+                    />
+                </Animated.View>
 
                 <ThemedText
                     type="subtitle"
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     itemCard: {
         width: "48%",
         height: 220,
-        borderRadius: 20,
+        borderRadius: 22,
         overflow: "hidden",
     },
 

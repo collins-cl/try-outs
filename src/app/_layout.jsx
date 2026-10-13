@@ -12,6 +12,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { useWindowDimensions } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -59,9 +60,11 @@ export default function RootLayout() {
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <ThemeProvider>
-                <RootNavigator />
-            </ThemeProvider>
+            <KeyboardProvider>
+                <ThemeProvider>
+                    <RootNavigator />
+                </ThemeProvider>
+            </KeyboardProvider>
         </GestureHandlerRootView>
     );
 }

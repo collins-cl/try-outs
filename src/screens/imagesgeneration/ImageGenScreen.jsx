@@ -22,133 +22,139 @@ const Image = () => {
     const [infoActive, setInfoActive] = useState(true);
     const [activeTab, setActiveTab] = useState("trending");
     return (
-        <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={-25}
-        >
-            <Screen>
-                <DrawerToggle />
-                <Stack.Screen options={{ headerTitle: "Image" }} />
-
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    contentInsetAdjustmentBehavior="automatic"
-                    contentContainerStyle={styles.container}
-                >
-                    {infoActive && (
-                        <GlassSurface style={styles.infoCard}>
-                            <View
-                                style={{
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    gap: 16,
-                                }}
-                            >
-                                <Icon
-                                    name="library"
-                                    tintColor={colors.text}
-                                    size={18}
-                                />
-
-                                <View style={{ width: "80%", gap: 6 }}>
-                                    <ThemedText type="subtitle">
-                                        Your generated images moved to Library
-                                    </ThemedText>
-
-                                    <ThemedText
-                                        type="caption"
-                                        colorName="textMuted"
-                                    >
-                                        You can now find your generated images
-                                        in the Library tab from the sidebar
-                                    </ThemedText>
-                                </View>
-                            </View>
-
-                            <Pressable onPress={() => setInfoActive(false)}>
-                                <Icon
-                                    name={"cancel"}
-                                    tintColor={colors.text}
-                                    size={14}
-                                />
-                            </Pressable>
-                        </GlassSurface>
-                    )}
+        <View style={styles.screenRoot}>
+            <KeyboardAvoidingView
+                style={styles.screenRoot}
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                keyboardVerticalOffset={-25}
+            >
+                <Screen>
+                    <DrawerToggle />
+                    <Stack.Screen options={{ headerTitle: "Images" }} />
 
                     <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{
-                            marginTop: 20,
-                        }}
-                        contentContainerStyle={{ gap: 6 }}
+                        showsVerticalScrollIndicator={false}
+                        contentInsetAdjustmentBehavior="automatic"
+                        contentContainerStyle={styles.container}
                     >
-                        <Pressable
-                            onPress={() => setActiveTab("trending")}
-                            style={[
-                                styles.tabButtons,
-                                {
-                                    backgroundColor:
-                                        activeTab === "trending"
-                                            ? colors.surface
-                                            : null,
-                                },
-                            ]}
-                        >
-                            <ThemedText
-                                type="semiBold"
-                                style={{
-                                    color:
-                                        activeTab === "trending"
-                                            ? colors.text
-                                            : colors.textMuted,
-                                }}
-                            >
-                                Trending
-                            </ThemedText>
-                        </Pressable>
+                        {infoActive && (
+                            <GlassSurface style={styles.infoCard}>
+                                <View
+                                    style={{
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        gap: 16,
+                                    }}
+                                >
+                                    <Icon
+                                        name="library"
+                                        tintColor={colors.text}
+                                        size={18}
+                                    />
 
-                        <Pressable
-                            onPress={() => setActiveTab("templates")}
-                            style={[
-                                styles.tabButtons,
-                                {
-                                    backgroundColor:
-                                        activeTab === "templates"
-                                            ? colors.surface
-                                            : null,
-                                },
-                            ]}
+                                    <View style={{ width: "80%", gap: 6 }}>
+                                        <ThemedText type="subtitle">
+                                            Your generated images moved to
+                                            Library
+                                        </ThemedText>
+
+                                        <ThemedText
+                                            type="caption"
+                                            colorName="textMuted"
+                                        >
+                                            You can now find your generated
+                                            images in the Library tab from the
+                                            sidebar
+                                        </ThemedText>
+                                    </View>
+                                </View>
+
+                                <Pressable onPress={() => setInfoActive(false)}>
+                                    <Icon
+                                        name={"cancel"}
+                                        tintColor={colors.text}
+                                        size={14}
+                                    />
+                                </Pressable>
+                            </GlassSurface>
+                        )}
+
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            style={{
+                                marginTop: 20,
+                            }}
+                            contentContainerStyle={{ gap: 6 }}
                         >
-                            <ThemedText
-                                type="semiBold"
-                                style={{
-                                    color:
-                                        activeTab === "templates"
-                                            ? colors.text
-                                            : colors.textMuted,
-                                }}
+                            <Pressable
+                                onPress={() => setActiveTab("trending")}
+                                style={[
+                                    styles.tabButtons,
+                                    {
+                                        backgroundColor:
+                                            activeTab === "trending"
+                                                ? colors.surface
+                                                : null,
+                                    },
+                                ]}
                             >
-                                Templates
-                            </ThemedText>
-                        </Pressable>
+                                <ThemedText
+                                    type="semiBold"
+                                    style={{
+                                        color:
+                                            activeTab === "trending"
+                                                ? colors.text
+                                                : colors.textMuted,
+                                    }}
+                                >
+                                    Trending
+                                </ThemedText>
+                            </Pressable>
+
+                            <Pressable
+                                onPress={() => setActiveTab("templates")}
+                                style={[
+                                    styles.tabButtons,
+                                    {
+                                        backgroundColor:
+                                            activeTab === "templates"
+                                                ? colors.surface
+                                                : null,
+                                    },
+                                ]}
+                            >
+                                <ThemedText
+                                    type="semiBold"
+                                    style={{
+                                        color:
+                                            activeTab === "templates"
+                                                ? colors.text
+                                                : colors.textMuted,
+                                    }}
+                                >
+                                    Templates
+                                </ThemedText>
+                            </Pressable>
+                        </ScrollView>
+
+                        <View style={{ marginTop: 20 }}>
+                            <ImageTabSwitch tab={activeTab} />
+                        </View>
                     </ScrollView>
-
-                    <View style={{ marginTop: 20 }}>
-                        <ImageTabSwitch tab={activeTab} />
-                    </View>
-                </ScrollView>
-
-                <FloatingInputPill />
-            </Screen>
-        </KeyboardAvoidingView>
+                </Screen>
+            </KeyboardAvoidingView>
+            <FloatingInputPill />
+        </View>
     );
 };
 
 export default Image;
 
 const styles = StyleSheet.create({
+    screenRoot: {
+        flex: 1,
+    },
     container: {
         paddingHorizontal: 16,
         marginTop: 10,
