@@ -29,7 +29,6 @@ const ImageGenFormsheet = () => {
         return <ThemedText>data not found</ThemedText>;
     }
 
-    console.log(theme);
 
     return (
         <>

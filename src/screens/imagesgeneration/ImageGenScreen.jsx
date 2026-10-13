@@ -25,7 +25,7 @@ const Image = () => {
         <KeyboardAvoidingView
             style={{ flex: 1 }}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={-20}
+            keyboardVerticalOffset={-25}
         >
             <Screen>
                 <DrawerToggle />
@@ -97,6 +97,7 @@ const Image = () => {
                             ]}
                         >
                             <ThemedText
+                                type="semiBold"
                                 style={{
                                     color:
                                         activeTab === "trending"
@@ -121,6 +122,7 @@ const Image = () => {
                             ]}
                         >
                             <ThemedText
+                                type="semiBold"
                                 style={{
                                     color:
                                         activeTab === "templates"
@@ -166,6 +168,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 22.5,
-        height: 40,
+        height: 45,
     },
 });

@@ -1,10 +1,18 @@
 import GlassSurface from "@/components/GlassSurface";
+import { useKeyboardProgress } from "@/hooks/keyboard/useKeyboardProgress";
+import { useState } from "react";
 import { StyleSheet, TextInput, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const FloatingInputPill = () => {
     const { width } = useWindowDimensions();
     const insets = useSafeAreaInsets();
+    const [active, setActive] = useState(false);
+    // const { progress } = useKeyboardProgress();
+
+
+    // console.log(progress);
+
     return (
         <View
             style={[styles.floatingPillWrapper, { bottom: insets.bottom }]}
@@ -12,9 +20,13 @@ const FloatingInputPill = () => {
         >
             <GlassSurface
                 glassStyle="regular"
-                style={[styles.floatingPill, { width: width * 0.72 }]}
+                style={[styles.floatingPill, { width: width * 0.8 }]}
             >
-                <TextInput placeholder="tap in here" />
+                <TextInput
+                    placeholder="tap in here"
+                    onFocus={() => setActive(true)}
+                    style={{ flex: 1 }}
+                />
             </GlassSurface>
         </View>
     );
