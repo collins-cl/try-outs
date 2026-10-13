@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import FloatingInputPill from "./components/FloatingInputPill";
 import { ImageTabSwitch } from "./components/ImageTabSwitch";
+import GeneratedImages from "./GeneratedImages";
 
 const Image = () => {
     const { colors } = useTheme();
@@ -35,6 +36,7 @@ const Image = () => {
                     <ScrollView
                         showsVerticalScrollIndicator={false}
                         contentInsetAdjustmentBehavior="automatic"
+                        contentContainerStyle={{ paddingBottom: 150 }}
                     >
                         <View style={{ paddingHorizontal: 16 }}>
                             {infoActive && (
@@ -143,6 +145,10 @@ const Image = () => {
                             <View style={{ marginTop: 20 }}>
                                 <ImageTabSwitch tab={activeTab} />
                             </View>
+                        </View>
+
+                        <View style={{ marginTop: 50 }}>
+                            <GeneratedImages />
                         </View>
                     </ScrollView>
                 </Screen>
