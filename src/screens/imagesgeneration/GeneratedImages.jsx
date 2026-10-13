@@ -1,9 +1,11 @@
 import ThemedText from "@/components/Themedtext";
 import { ImageAssets } from "@/constants/imageData";
+import { useTheme } from "@/hooks/use-theme";
 import { Image } from "expo-image";
-import { FlatList, Pressable, StyleSheet, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
 
 const GeneratedImages = () => {
+    const {colors} = useTheme()
     return (
         <View style={{ flex: 1 }}>
             <View style={{ paddingHorizontal: 16 }}>
@@ -20,8 +22,9 @@ const GeneratedImages = () => {
                 <FlatList
                     data={ImageAssets}
                     numColumns={3}
-                    initialNumToRender={24}
-                    maxToRenderPerBatch={24}
+                    initialNumToRender={12}
+                    maxToRenderPerBatch={6}
+                    windowSize={5}
                     columnWrapperStyle={{ gap: 1 }}
                     contentContainerStyle={{ gap: 1 }}
                     scrollEnabled={false}
@@ -31,16 +34,16 @@ const GeneratedImages = () => {
                             style={({ pressed }) => ({
                                 width: "33%",
                                 height: 150,
-                                backgroundColor: "red",
+                                backgroundColor: colors.card,
                                 opacity: pressed && 0.8,
                             })}
                         >
-                            <Image
+                            {/* <Image
                                 source={item.image}
                                 style={{ width: "100%", height: "100%" }}
                                 contentFit="cover"
                                 cachePolicy={"memory-disk"}
-                            />
+                            /> */}
                         </Pressable>
                     )}
                 />
@@ -50,5 +53,3 @@ const GeneratedImages = () => {
 };
 
 export default GeneratedImages;
-
-const styles = StyleSheet.create({});
