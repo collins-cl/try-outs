@@ -1,4 +1,6 @@
 import ExpoModulesCore
+
+import ExpoModulesCore
 import UIKit
 import QuartzCore
 

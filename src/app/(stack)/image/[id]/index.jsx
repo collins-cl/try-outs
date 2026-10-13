@@ -1,1 +1,1 @@
-export { default } from "@/screens/imagesgeneration/ImageGenFormsheet";
+export { default } from "../../../../screens/imagesgeneration/ImageGenFormsheet";

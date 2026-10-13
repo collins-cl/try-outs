@@ -8,10 +8,10 @@ const FloatingInputPill = () => {
     const { width } = useWindowDimensions();
     const insets = useSafeAreaInsets();
     const [active, setActive] = useState(false);
-    // const { progress } = useKeyboardProgress();
+    const { progress } = useKeyboardProgress();
 
 
-    // console.log(progress);
+    console.log(progress);
 
     return (
         <View

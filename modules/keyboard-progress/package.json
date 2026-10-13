@@ -1,5 +1,6 @@
 {
-  "name": "keyboard-progress",
-  "version": "1.0.0",
-  "main": "index.js"
+    "name": "keyboard-progress",
+    "version": "1.0.0",
+    "private": true,
+    "main": "src/index.js"
 }
