@@ -35,111 +35,114 @@ const Image = () => {
                     <ScrollView
                         showsVerticalScrollIndicator={false}
                         contentInsetAdjustmentBehavior="automatic"
-                        contentContainerStyle={styles.container}
                     >
-                        {infoActive && (
-                            <GlassSurface style={styles.infoCard}>
-                                <View
-                                    style={{
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        gap: 16,
-                                    }}
-                                >
-                                    <Icon
-                                        name="library"
-                                        tintColor={colors.text}
-                                        size={18}
-                                    />
+                        <View style={{ paddingHorizontal: 16 }}>
+                            {infoActive && (
+                                <GlassSurface style={styles.infoCard}>
+                                    <View
+                                        style={{
+                                            flexDirection: "row",
+                                            alignItems: "center",
+                                            gap: 16,
+                                        }}
+                                    >
+                                        <Icon
+                                            name="library"
+                                            tintColor={colors.text}
+                                            size={18}
+                                        />
 
-                                    <View style={{ width: "80%", gap: 6 }}>
-                                        <ThemedText type="subtitle">
-                                            Your generated images moved to
-                                            Library
-                                        </ThemedText>
+                                        <View style={{ width: "80%", gap: 6 }}>
+                                            <ThemedText type="subtitle">
+                                                Your generated images moved to
+                                                Library
+                                            </ThemedText>
 
-                                        <ThemedText
-                                            type="caption"
-                                            colorName="textMuted"
-                                        >
-                                            You can now find your generated
-                                            images in the Library tab from the
-                                            sidebar
-                                        </ThemedText>
+                                            <ThemedText
+                                                type="caption"
+                                                colorName="textMuted"
+                                            >
+                                                You can now find your generated
+                                                images in the Library tab from
+                                                the sidebar
+                                            </ThemedText>
+                                        </View>
                                     </View>
-                                </View>
 
-                                <Pressable onPress={() => setInfoActive(false)}>
-                                    <Icon
-                                        name={"cancel"}
-                                        tintColor={colors.text}
-                                        size={14}
-                                    />
+                                    <Pressable
+                                        onPress={() => setInfoActive(false)}
+                                    >
+                                        <Icon
+                                            name={"cancel"}
+                                            tintColor={colors.text}
+                                            size={14}
+                                        />
+                                    </Pressable>
+                                </GlassSurface>
+                            )}
+
+                            <ScrollView
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                                style={{
+                                    marginTop: 20,
+                                }}
+                                contentContainerStyle={{ gap: 6 }}
+                            >
+                                <Pressable
+                                    onPress={() => setActiveTab("trending")}
+                                    style={[
+                                        styles.tabButtons,
+                                        {
+                                            backgroundColor:
+                                                activeTab === "trending"
+                                                    ? colors.surface
+                                                    : null,
+                                        },
+                                    ]}
+                                >
+                                    <ThemedText
+                                        type="semiBold"
+                                        style={{
+                                            color:
+                                                activeTab === "trending"
+                                                    ? colors.text
+                                                    : colors.textMuted,
+                                        }}
+                                    >
+                                        Trending
+                                    </ThemedText>
                                 </Pressable>
-                            </GlassSurface>
-                        )}
 
-                        <ScrollView
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                            style={{
-                                marginTop: 20,
-                            }}
-                            contentContainerStyle={{ gap: 6 }}
-                        >
-                            <Pressable
-                                onPress={() => setActiveTab("trending")}
-                                style={[
-                                    styles.tabButtons,
-                                    {
-                                        backgroundColor:
-                                            activeTab === "trending"
-                                                ? colors.surface
-                                                : null,
-                                    },
-                                ]}
-                            >
-                                <ThemedText
-                                    type="semiBold"
-                                    style={{
-                                        color:
-                                            activeTab === "trending"
-                                                ? colors.text
-                                                : colors.textMuted,
-                                    }}
+                                <Pressable
+                                    onPress={() => setActiveTab("templates")}
+                                    style={[
+                                        styles.tabButtons,
+                                        {
+                                            backgroundColor:
+                                                activeTab === "templates"
+                                                    ? colors.surface
+                                                    : null,
+                                        },
+                                    ]}
                                 >
-                                    Trending
-                                </ThemedText>
-                            </Pressable>
+                                    <ThemedText
+                                        type="semiBold"
+                                        style={{
+                                            color:
+                                                activeTab === "templates"
+                                                    ? colors.text
+                                                    : colors.textMuted,
+                                        }}
+                                    >
+                                        Templates
+                                    </ThemedText>
+                                </Pressable>
+                            </ScrollView>
 
-                            <Pressable
-                                onPress={() => setActiveTab("templates")}
-                                style={[
-                                    styles.tabButtons,
-                                    {
-                                        backgroundColor:
-                                            activeTab === "templates"
-                                                ? colors.surface
-                                                : null,
-                                    },
-                                ]}
-                            >
-                                <ThemedText
-                                    type="semiBold"
-                                    style={{
-                                        color:
-                                            activeTab === "templates"
-                                                ? colors.text
-                                                : colors.textMuted,
-                                    }}
-                                >
-                                    Templates
-                                </ThemedText>
-                            </Pressable>
-                        </ScrollView>
-
-                        <View style={{ marginTop: 20 }}>
-                            <ImageTabSwitch tab={activeTab} />
+                            <View style={{ marginTop: 20 }}>
+                                <ImageTabSwitch tab={activeTab} />
+                            </View>
                         </View>
                     </ScrollView>
                 </Screen>
@@ -154,10 +157,6 @@ export default Image;
 const styles = StyleSheet.create({
     screenRoot: {
         flex: 1,
-    },
-    container: {
-        paddingHorizontal: 16,
-        marginTop: 10,
     },
 
     infoCard: {
