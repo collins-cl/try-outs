@@ -23,7 +23,8 @@ export const TrendingDataRoute = [
         id: 2,
         name: "Anime",
         title: "Vivid Characters Straight Out Of A Manga",
-        description: "Vibrant anime-style illustration with soft cel shading.",
+        description:
+            "Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading.",
         image: Anime,
     },
     {

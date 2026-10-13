@@ -42,7 +42,7 @@ const Home = () => {
                 contentInsetAdjustmentBehavior="automatic"
                 contentContainerStyle={styles.content}
             >
-                <IconButton onPress={() => router.push("/popover")}>
+                <IconButton onPress={() => router.push("/image")}>
                     <ThemedText>Hell</ThemedText>
                 </IconButton>
             </ScrollView>

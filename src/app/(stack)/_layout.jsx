@@ -30,14 +30,15 @@ const StackLayout = () => {
                 }}
             >
                 <Stack.Screen name="index" options={{ animation: "none" }} />
-                
+
                 <Stack.Screen name="image" options={{ animation: "none" }} />
 
                 <Stack.Screen
                     name="image/[id]"
                     options={{
                         presentation: "formSheet",
-                        sheetAllowedDetents: "fitToContents",
+                        contentStyle: { backgroundColor: colors.background },
+                        sheetGrabberVisible: false,
                     }}
                 />
 
@@ -45,7 +46,7 @@ const StackLayout = () => {
                     name="popover"
                     options={{
                         presentation: "formSheet",
-                        sheetAllowedDetents: [0.5, 1],
+                        sheetAllowedDetents: [0.5],
                         sheetGrabberVisible: true,
                         sheetCornerRadius: 24,
                     }}
