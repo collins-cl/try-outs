@@ -101,3 +101,18 @@ export const TrendingDataRoute = [
 ];
 
 export const ReverseTrendingDataRoute = [...TrendingDataRoute].reverse();
+
+export const ImageAssets = [
+    { id: 1, image: AerialView },
+    { id: 2, image: Anime },
+    { id: 3, image: Avatar3D },
+    { id: 4, image: Caricature },
+    { id: 5, image: Photobooth },
+    { id: 6, image: PinCollection },
+    { id: 7, image: Portrait70s },
+    { id: 8, image: Flashback80s },
+    { id: 9, image: Sketch },
+    { id: 10, image: Stickers },
+    { id: 11, image: UnderwaterShot },
+    { id: 12, image: Y2KDigicam },
+];
