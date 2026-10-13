@@ -29,7 +29,6 @@ const ImageGenFormsheet = () => {
         return <ThemedText>data not found</ThemedText>;
     }
 
-
     return (
         <>
             <Stack.Screen
@@ -70,6 +69,7 @@ const ImageGenFormsheet = () => {
                             source={data.image}
                             contentFit="cover"
                             style={StyleSheet.absoluteFill}
+                            cachePolicy={"memory-disk"}
                         />
                     </View>
 

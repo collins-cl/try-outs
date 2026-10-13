@@ -6,7 +6,6 @@ import { FlatList } from "react-native";
 import TrendingItem from "./TrendingItem";
 
 export const ImageTabSwitch = ({ tab }) => {
-
     switch (tab) {
         case "trending":
             return (
@@ -18,6 +17,8 @@ export const ImageTabSwitch = ({ tab }) => {
                     data={TrendingDataRoute}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => <TrendingItem item={item} />}
+                    initialNumToRender={6}
+                    maxToRenderPerBatch={6}
                 />
             );
         case "templates":
@@ -30,6 +31,8 @@ export const ImageTabSwitch = ({ tab }) => {
                     data={ReverseTrendingDataRoute}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => <TrendingItem item={item} />}
+                    initialNumToRender={6}
+                    maxToRenderPerBatch={6}
                 />
             );
         default:

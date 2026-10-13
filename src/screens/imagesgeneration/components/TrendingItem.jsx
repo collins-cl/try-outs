@@ -26,6 +26,8 @@ const TrendingItem = ({ item }) => {
                         source={item.image}
                         contentFit="cover"
                         style={StyleSheet.absoluteFill}
+                        cachePolicy={"memory-disk"}
+                        transition={300}
                     />
                 </Animated.View>
 
