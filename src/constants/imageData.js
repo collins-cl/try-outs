@@ -102,17 +102,32 @@ export const TrendingDataRoute = [
 
 export const ReverseTrendingDataRoute = [...TrendingDataRoute].reverse();
 
-export const ImageAssets = [
-    { id: 1, image: AerialView },
-    { id: 2, image: Anime },
-    { id: 3, image: Avatar3D },
-    { id: 4, image: Caricature },
-    { id: 5, image: Photobooth },
-    { id: 6, image: PinCollection },
-    { id: 7, image: Portrait70s },
-    { id: 8, image: Flashback80s },
-    { id: 9, image: Sketch },
-    { id: 10, image: Stickers },
-    { id: 11, image: UnderwaterShot },
-    { id: 12, image: Y2KDigicam },
+const importedImages = [
+    AerialView,
+    Anime,
+    Avatar3D,
+    Caricature,
+    Photobooth,
+    PinCollection,
+    Portrait70s,
+    Flashback80s,
+    Sketch,
+    Stickers,
+    UnderwaterShot,
+    Y2KDigicam,
 ];
+
+const imageEntries = Array.from({ length: 100 }, (_, index) => ({
+    id: index + 1,
+    image: importedImages[index % importedImages.length],
+}));
+
+for (let index = imageEntries.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [imageEntries[index], imageEntries[swapIndex]] = [
+        imageEntries[swapIndex],
+        imageEntries[index],
+    ];
+}
+
+export const ImageAssets = imageEntries;
