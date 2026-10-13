@@ -17,9 +17,9 @@ export const ImageTabSwitch = ({ tab }) => {
                     data={TrendingDataRoute}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => <TrendingItem item={item} />}
-                    initialNumToRender={10}
-                    maxToRenderPerBatch={6}
-                    windowSize={5}
+                    initialNumToRender={6}
+                    maxToRenderPerBatch={4}
+                    windowSize={2}
                 />
             );
         case "templates":
@@ -32,9 +32,9 @@ export const ImageTabSwitch = ({ tab }) => {
                     data={ReverseTrendingDataRoute}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => <TrendingItem item={item} />}
-                    initialNumToRender={10}
-                    maxToRenderPerBatch={6}
-                    windowSize={5}
+                    initialNumToRender={6}
+                    maxToRenderPerBatch={4}
+                    windowSize={2}
                 />
             );
         default:

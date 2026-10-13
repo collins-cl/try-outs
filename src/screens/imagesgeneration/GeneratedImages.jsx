@@ -5,7 +5,8 @@ import { Image } from "expo-image";
 import { FlatList, Pressable, View } from "react-native";
 
 const GeneratedImages = () => {
-    const {colors} = useTheme()
+    const { colors } = useTheme();
+    
     return (
         <View style={{ flex: 1 }}>
             <View style={{ paddingHorizontal: 16 }}>
@@ -22,8 +23,8 @@ const GeneratedImages = () => {
                 <FlatList
                     data={ImageAssets}
                     numColumns={3}
-                    initialNumToRender={12}
-                    maxToRenderPerBatch={6}
+                    initialNumToRender={9}
+                    maxToRenderPerBatch={3}
                     windowSize={5}
                     columnWrapperStyle={{ gap: 1 }}
                     contentContainerStyle={{ gap: 1 }}
@@ -40,7 +41,11 @@ const GeneratedImages = () => {
                         >
                             <Image
                                 source={item.image}
-                                style={{ width: "100%", height: "100%" }}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    aspectRatio: 1,
+                                }}
                                 contentFit="cover"
                                 cachePolicy={"memory-disk"}
                             />

@@ -1,6 +1,7 @@
 import ThemedText from "@/components/Themedtext";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
+import { memo } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
@@ -19,7 +20,7 @@ const TrendingItem = ({ item }) => {
         >
             <View style={styles.card}>
                 <Animated.View
-                    entering={FadeIn.duration(150)}
+                    entering={FadeIn.duration(100)}
                     style={StyleSheet.absoluteFill}
                 >
                     <Image
@@ -45,7 +46,7 @@ const TrendingItem = ({ item }) => {
     );
 };
 
-export default TrendingItem;
+export default memo(TrendingItem);
 
 const styles = StyleSheet.create({
     itemCard: {
