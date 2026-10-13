@@ -23,7 +23,7 @@ const TrendingItem = ({ item }) => {
                     style={StyleSheet.absoluteFill}
                 >
                     <Image
-                        source={item.image}
+                        source={item.thumbImage}
                         contentFit="cover"
                         style={StyleSheet.absoluteFill}
                         cachePolicy={"memory-disk"}

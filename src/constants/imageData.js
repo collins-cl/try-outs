@@ -8,6 +8,18 @@ import Photobooth from "../../assets/mockimages/photobooth.jpg";
 import PinCollection from "../../assets/mockimages/pincollection.jpeg";
 import Sketch from "../../assets/mockimages/sketch.jpg";
 import Stickers from "../../assets/mockimages/stickers.jpg";
+import ThumbAvatar3D from "../../assets/mockimages/thumbs/3davatar.jpeg";
+import ThumbPortrait70s from "../../assets/mockimages/thumbs/70spotrait.jpeg";
+import ThumbFlashback80s from "../../assets/mockimages/thumbs/80sflashback.jpg";
+import ThumbAerialView from "../../assets/mockimages/thumbs/aerialview.jpg";
+import ThumbAnime from "../../assets/mockimages/thumbs/anime.png";
+import ThumbCaricature from "../../assets/mockimages/thumbs/caricature.jpg";
+import ThumbPhotobooth from "../../assets/mockimages/thumbs/photobooth.jpg";
+import ThumbPinCollection from "../../assets/mockimages/thumbs/pincollection.jpeg";
+import ThumbSketch from "../../assets/mockimages/thumbs/sketch.jpg";
+import ThumbStickers from "../../assets/mockimages/thumbs/stickers.jpg";
+import ThumbUnderwaterShot from "../../assets/mockimages/thumbs/underwatershoit.jpeg";
+import ThumbY2KDigicam from "../../assets/mockimages/thumbs/y2kdigicamm.jpg";
 import UnderwaterShot from "../../assets/mockimages/underwatershoit.jpeg";
 import Y2KDigicam from "../../assets/mockimages/y2kdigicamm.jpg";
 
@@ -18,6 +30,7 @@ export const TrendingDataRoute = [
         title: "Soar Above The World From New Heights",
         description: "drone view",
         image: AerialView,
+        thumbImage: ThumbAerialView,
     },
     {
         id: 2,
@@ -26,6 +39,7 @@ export const TrendingDataRoute = [
         description:
             "Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading. Vibrant anime-style illustration with soft cel shading.",
         image: Anime,
+        thumbImage: ThumbAnime,
     },
     {
         id: 3,
@@ -33,6 +47,7 @@ export const TrendingDataRoute = [
         title: "Bring Your Digital Self Into Three Dimensions",
         description: "Playful 3D avatar render with soft studio lighting.",
         image: Avatar3D,
+        thumbImage: ThumbAvatar3D,
     },
     {
         id: 4,
@@ -41,6 +56,7 @@ export const TrendingDataRoute = [
         description:
             "Exaggerated caricature portrait with bold linework and color.",
         image: Caricature,
+        thumbImage: ThumbCaricature,
     },
     {
         id: 5,
@@ -48,6 +64,7 @@ export const TrendingDataRoute = [
         title: "Strike A Pose Inside The Classic Booth",
         description: "Vintage photo booth strip with warm flash tones.",
         image: Photobooth,
+        thumbImage: ThumbPhotobooth,
     },
     {
         id: 6,
@@ -55,6 +72,7 @@ export const TrendingDataRoute = [
         title: "Tiny Enamel Treasures You Can Wear Anywhere",
         description: "Flat-lay of an enamel pin collection on denim.",
         image: PinCollection,
+        thumbImage: ThumbPinCollection,
     },
     {
         id: 7,
@@ -62,6 +80,7 @@ export const TrendingDataRoute = [
         title: "Groovy Retro Vibes Straight From The Seventies",
         description: "Retro 70s film portrait with grain and warm hues.",
         image: Portrait70s,
+        thumbImage: ThumbPortrait70s,
     },
     {
         id: 8,
@@ -69,6 +88,7 @@ export const TrendingDataRoute = [
         title: "Neon Nights And Synthwave Dreams Come Alive",
         description: "Neon-drenched 80s synthwave flashback scene.",
         image: Flashback80s,
+        thumbImage: ThumbFlashback80s,
     },
     {
         id: 9,
@@ -76,6 +96,7 @@ export const TrendingDataRoute = [
         title: "Rough Lines That Bring Ideas To Life",
         description: "Pencil sketch study with expressive hatching.",
         image: Sketch,
+        thumbImage: ThumbSketch,
     },
     {
         id: 10,
@@ -83,6 +104,7 @@ export const TrendingDataRoute = [
         title: "Peel Off A Burst Of Colorful Fun",
         description: "Colorful die-cut sticker pack arranged on a notebook.",
         image: Stickers,
+        thumbImage: ThumbStickers,
     },
     {
         id: 11,
@@ -90,6 +112,7 @@ export const TrendingDataRoute = [
         title: "Dive Deep Into A World Of Blue",
         description: "Underwater shot with caustic light and deep blues.",
         image: UnderwaterShot,
+        thumbImage: ThumbUnderwaterShot,
     },
     {
         id: 12,
@@ -97,24 +120,25 @@ export const TrendingDataRoute = [
         title: "Turn Back Time With Grainy Digital Memories",
         description: "Y2K digicam snap with flash and a dated timestamp.",
         image: Y2KDigicam,
+        thumbImage: ThumbY2KDigicam,
     },
 ];
 
 export const ReverseTrendingDataRoute = [...TrendingDataRoute].reverse();
 
 const importedImages = [
-    AerialView,
-    Anime,
-    Avatar3D,
-    Caricature,
-    Photobooth,
-    PinCollection,
-    Portrait70s,
-    Flashback80s,
-    Sketch,
-    Stickers,
-    UnderwaterShot,
-    Y2KDigicam,
+    ThumbAerialView,
+    ThumbAnime,
+    ThumbAvatar3D,
+    ThumbCaricature,
+    ThumbPhotobooth,
+    ThumbPinCollection,
+    ThumbPortrait70s,
+    ThumbFlashback80s,
+    ThumbSketch,
+    ThumbStickers,
+    ThumbUnderwaterShot,
+    ThumbY2KDigicam,
 ];
 
 const imageEntries = Array.from({ length: 100 }, (_, index) => ({

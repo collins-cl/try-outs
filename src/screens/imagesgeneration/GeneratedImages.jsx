@@ -38,12 +38,12 @@ const GeneratedImages = () => {
                                 opacity: pressed && 0.8,
                             })}
                         >
-                            {/* <Image
+                            <Image
                                 source={item.image}
                                 style={{ width: "100%", height: "100%" }}
                                 contentFit="cover"
                                 cachePolicy={"memory-disk"}
-                            /> */}
+                            />
                         </Pressable>
                     )}
                 />
