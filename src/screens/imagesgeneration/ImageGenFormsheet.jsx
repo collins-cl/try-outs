@@ -2,14 +2,16 @@ import ThemedText from "@/components/Themedtext";
 import { TrendingDataRoute } from "@/constants/imageData";
 import { useTheme } from "@/hooks/use-theme";
 import { Image } from "expo-image";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, StyleSheet, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const ImageGenFormsheet = () => {
     const { id } = useLocalSearchParams();
-    const { colors } = useTheme();
+    const theme = useTheme();
+    const { colors } = theme;
+    const router = useRouter();
     const insets = useSafeAreaInsets();
     const { height: windowHeight } = useWindowDimensions();
     const [expanded, setExpanded] = useState(false);
@@ -27,7 +29,7 @@ const ImageGenFormsheet = () => {
         return <ThemedText>data not found</ThemedText>;
     }
 
-    
+    console.log(theme);
 
     return (
         <>
@@ -55,7 +57,12 @@ const ImageGenFormsheet = () => {
                         icon="square.and.arrow.up"
                         separateBackground
                     />
-                    <Stack.Toolbar.Button icon="xmark" separateBackground />
+
+                    <Stack.Toolbar.Button
+                        icon="xmark"
+                        separateBackground
+                        onPress={() => router.back()}
+                    />
                 </Stack.Toolbar>
 
                 <View style={styles.content}>
@@ -104,7 +111,8 @@ const ImageGenFormsheet = () => {
                             styles.button,
                             {
                                 borderColor: colors.border,
-                                backgroundColor: colors.card,
+                                backgroundColor:
+                                    theme.mode === "dark" && colors.card,
                             },
                         ]}
                     >
@@ -117,7 +125,9 @@ const ImageGenFormsheet = () => {
                             { backgroundColor: colors.text },
                         ]}
                     >
-                        <ThemedText colorName="textInverted">Choose a photo</ThemedText>
+                        <ThemedText colorName="textInverted">
+                            Choose a photo
+                        </ThemedText>
                     </Pressable>
                 </View>
             </View>
