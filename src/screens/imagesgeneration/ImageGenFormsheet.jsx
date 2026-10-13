@@ -66,7 +66,7 @@ const ImageGenFormsheet = () => {
                 <View style={styles.content}>
                     <View style={{ height: 300 }}>
                         <Image
-                            source={data.image}
+                            source={data.thumbImage}
                             contentFit="cover"
                             style={StyleSheet.absoluteFill}
                             cachePolicy={"memory-disk"}

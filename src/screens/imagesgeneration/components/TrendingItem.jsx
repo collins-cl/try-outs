@@ -28,7 +28,7 @@ const TrendingItem = ({ item }) => {
                         contentFit="cover"
                         style={StyleSheet.absoluteFill}
                         cachePolicy={"memory-disk"}
-                        transition={300}
+                        transition={150}
                     />
                 </Animated.View>
 
