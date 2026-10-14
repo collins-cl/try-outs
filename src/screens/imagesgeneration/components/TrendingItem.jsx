@@ -20,15 +20,14 @@ const TrendingItem = ({ item }) => {
         >
             <View style={styles.card}>
                 <Animated.View
-                    entering={FadeIn.duration(100)}
+                    entering={FadeIn.duration(50)}
                     style={StyleSheet.absoluteFill}
                 >
                     <Image
-                        source={item.thumbImage}
+                        source={item.image}
                         contentFit="cover"
                         style={StyleSheet.absoluteFill}
                         cachePolicy={"memory-disk"}
-                        transition={150}
                     />
                 </Animated.View>
 

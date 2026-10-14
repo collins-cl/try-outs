@@ -6,7 +6,7 @@ import { FlatList, Pressable, View } from "react-native";
 
 const GeneratedImages = () => {
     const { colors } = useTheme();
-    
+
     return (
         <View style={{ flex: 1 }}>
             <View style={{ paddingHorizontal: 16 }}>
@@ -23,9 +23,10 @@ const GeneratedImages = () => {
                 <FlatList
                     data={ImageAssets}
                     numColumns={3}
-                    initialNumToRender={9}
+                    initialNumToRender={5}
                     maxToRenderPerBatch={3}
                     windowSize={5}
+                    style={{ width: "100%" }}
                     columnWrapperStyle={{ gap: 1 }}
                     contentContainerStyle={{ gap: 1 }}
                     scrollEnabled={false}
@@ -33,7 +34,7 @@ const GeneratedImages = () => {
                     renderItem={({ item }) => (
                         <Pressable
                             style={({ pressed }) => ({
-                                width: "33%",
+                                flex: 1,
                                 height: 150,
                                 backgroundColor: colors.card,
                                 opacity: pressed && 0.8,
@@ -44,7 +45,6 @@ const GeneratedImages = () => {
                                 style={{
                                     width: "100%",
                                     height: "100%",
-                                    aspectRatio: 1,
                                 }}
                                 contentFit="cover"
                                 cachePolicy={"memory-disk"}

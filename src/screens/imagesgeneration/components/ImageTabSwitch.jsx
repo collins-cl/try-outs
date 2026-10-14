@@ -17,8 +17,8 @@ export const ImageTabSwitch = ({ tab }) => {
                     data={TrendingDataRoute}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => <TrendingItem item={item} />}
-                    initialNumToRender={6}
-                    maxToRenderPerBatch={4}
+                    initialNumToRender={5}
+                    maxToRenderPerBatch={3}
                     windowSize={2}
                 />
             );
@@ -32,8 +32,8 @@ export const ImageTabSwitch = ({ tab }) => {
                     data={ReverseTrendingDataRoute}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({ item }) => <TrendingItem item={item} />}
-                    initialNumToRender={6}
-                    maxToRenderPerBatch={4}
+                    initialNumToRender={5}
+                    maxToRenderPerBatch={3}
                     windowSize={2}
                 />
             );
