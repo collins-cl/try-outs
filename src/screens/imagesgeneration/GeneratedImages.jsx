@@ -22,7 +22,7 @@ const GeneratedImages = () => {
             >
                 <FlatList
                     data={ImageAssets}
-                    numColumns={3}
+                    numColumns={2}
                     initialNumToRender={5}
                     maxToRenderPerBatch={3}
                     windowSize={5}

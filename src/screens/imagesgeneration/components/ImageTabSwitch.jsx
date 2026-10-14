@@ -2,40 +2,40 @@ import {
     ReverseTrendingDataRoute,
     TrendingDataRoute,
 } from "@/constants/imageData";
-import { FlatList } from "react-native";
+import { View } from "react-native";
 import TrendingItem from "./TrendingItem";
 
 export const ImageTabSwitch = ({ tab }) => {
     switch (tab) {
         case "trending":
             return (
-                <FlatList
-                    numColumns={2}
-                    columnWrapperStyle={{ justifyContent: "space-between" }}
-                    contentContainerStyle={{ gap: 14 }}
-                    scrollEnabled={false}
-                    data={TrendingDataRoute}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={({ item }) => <TrendingItem item={item} />}
-                    initialNumToRender={5}
-                    maxToRenderPerBatch={3}
-                    windowSize={2}
-                />
+                <View
+                    style={{
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                        gap: 12,
+                    }}
+                >
+                    {TrendingDataRoute &&
+                        TrendingDataRoute.map((item) => (
+                            <TrendingItem key={item.id} item={item} />
+                        ))}
+                </View>
             );
         case "templates":
             return (
-                <FlatList
-                    numColumns={2}
-                    columnWrapperStyle={{ justifyContent: "space-between" }}
-                    contentContainerStyle={{ gap: 14 }}
-                    scrollEnabled={false}
-                    data={ReverseTrendingDataRoute}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={({ item }) => <TrendingItem item={item} />}
-                    initialNumToRender={5}
-                    maxToRenderPerBatch={3}
-                    windowSize={2}
-                />
+                <View
+                    style={{
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                        gap: 12,
+                    }}
+                >
+                    {ReverseTrendingDataRoute &&
+                        ReverseTrendingDataRoute.map((item) => (
+                            <TrendingItem key={item.id} item={item} />
+                        ))}
+                </View>
             );
         default:
             return null;

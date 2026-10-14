@@ -89,7 +89,6 @@ const Image = () => {
                                 style={{
                                     marginTop: 20,
                                 }}
-                                contentContainerStyle={{ gap: 6 }}
                             >
                                 <Pressable
                                     onPress={() => setActiveTab("trending")}

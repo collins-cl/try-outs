@@ -1,32 +1,38 @@
 import ThemedText from "@/components/Themedtext";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
-import { memo } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, useWindowDimensions, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
+
+const HorizontalPadding = 32;
+const gap = 12;
 
 const TrendingItem = ({ item }) => {
     const router = useRouter();
+    const { width } = useWindowDimensions();
+    const availableWidth = width - HorizontalPadding;
+    const calculatedWidth = (availableWidth - gap) / 2;
 
     return (
         <Pressable
             onPress={() => router.push(`/image/${item.id}`)}
-            style={({ pressed }) => (
+            style={({ pressed }) => [
+                styles.itemCard,
                 {
                     opacity: pressed && 0.6,
+                    width: calculatedWidth,
                 },
-                styles.itemCard
-            )}
+            ]}
         >
             <View style={styles.card}>
                 <Animated.View
-                    entering={FadeIn.duration(50)}
+                    entering={FadeIn.duration(150)}
                     style={StyleSheet.absoluteFill}
                 >
                     <Image
-                        source={item.image}
+                        source={item.thumbImage}
                         contentFit="cover"
-                        style={StyleSheet.absoluteFill}
+                        style={{ width: "100%", height: "100%" }}
                         cachePolicy={"memory-disk"}
                     />
                 </Animated.View>
@@ -45,11 +51,10 @@ const TrendingItem = ({ item }) => {
     );
 };
 
-export default memo(TrendingItem);
+export default TrendingItem;
 
 const styles = StyleSheet.create({
     itemCard: {
-        width: "48%",
         height: 220,
         borderRadius: 22,
         overflow: "hidden",
