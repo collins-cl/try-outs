@@ -141,7 +141,7 @@ const importedImages = [
     ThumbY2KDigicam,
 ];
 
-const imageEntries = Array.from({ length: 100 }, (_, index) => ({
+const imageEntries = Array.from({ length: 21 }, (_, index) => ({
     id: index + 1,
     image: importedImages[index % importedImages.length],
 }));
