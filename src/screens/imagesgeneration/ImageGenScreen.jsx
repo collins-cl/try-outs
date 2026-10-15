@@ -36,7 +36,7 @@ const Image = () => {
                     <ScrollView
                         showsVerticalScrollIndicator={false}
                         contentInsetAdjustmentBehavior="automatic"
-                        contentContainerStyle={{ paddingBottom: 150 }}
+                        contentContainerStyle={{ paddingBottom: 100 }}
                     >
                         <View style={{ paddingHorizontal: 16 }}>
                             {infoActive && (

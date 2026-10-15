@@ -43,7 +43,7 @@ const StackLayout = () => {
                 />
 
                 <Stack.Screen
-                    name="popover"
+                    name="popover/[id]"
                     options={{
                         presentation: "formSheet",
                         sheetAllowedDetents: [0.5],
