@@ -43,6 +43,17 @@ const StackLayout = () => {
                 />
 
                 <Stack.Screen
+                    name="image/imagepreview/[id]"
+                    options={{
+                        presentation: "transparentModal",
+                        headerTitle: "",
+                        headerTransparent: true,
+                        animation: "fade",
+                        gestureEnabled: true,
+                    }}
+                />
+
+                <Stack.Screen
                     name="popover/[id]"
                     options={{
                         presentation: "formSheet",

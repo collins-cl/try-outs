@@ -36,7 +36,7 @@ const GeneratedImages = () => {
                             height: 150,
                         }}
                     >
-                        <Link href={`/popover/${item.id}`} asChild>
+                        <Link href={`/image/imagepreview/${item.id}`} asChild>
                             <Link.Trigger>
                                 <Pressable style={styles.tile}>
                                     <Image
