@@ -3,7 +3,7 @@ import { ImageAssets } from "@/constants/imageData";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { useState } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 
 const GAP = 2;
 
@@ -46,7 +46,20 @@ const GeneratedImages = () => {
                                     />
                                 </Pressable>
                             </Link.Trigger>
-                            <Link.Preview />
+
+                            <Link.Preview>
+                                <View style={StyleSheet.absoluteFill}>
+                                    <Image
+                                        source={item.image}
+                                        contentFit="cover"
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                        }}
+                                        cachePolicy={"memory-disk"}
+                                    />
+                                </View>
+                            </Link.Preview>
                         </Link>
                     </View>
                 ))}
