@@ -92,16 +92,19 @@ const ImagePreviewScreen = () => {
                         width: "80%",
                         height: 80,
                         alignItems: "center",
-                        justifyContent: "space-between",
+                        justifyContent: "space-around",
                         flexDirection: "row",
                         paddingHorizontal: 16,
+                        gap: 6,
                     }}
                 >
                     <View
                         style={{
                             flexDirection: "column",
+                            justifyContent: "center",
                             alignItems: "center",
                             gap: 4,
+                            flex: 1,
                         }}
                     >
                         <IconButton>
@@ -110,30 +113,31 @@ const ImagePreviewScreen = () => {
                                 color={colors.text}
                             />
                         </IconButton>
-                        <ThemedText>Edit</ThemedText>
+                        <ThemedText type="subtitle">Edit</ThemedText>
                     </View>
 
                     <View
                         style={{
                             flexDirection: "column",
+                            justifyContent: "center",
                             alignItems: "center",
                             gap: 4,
+                            flex: 1,
                         }}
                     >
                         <IconButton>
-                            <HugeiconsIcon
-                                icon={Resize}
-                                color={colors.text}
-                            />
+                            <HugeiconsIcon icon={Resize} color={colors.text} />
                         </IconButton>
-                        <ThemedText>Resize</ThemedText>
+                        <ThemedText type="subtitle">Resize</ThemedText>
                     </View>
 
                     <View
                         style={{
                             flexDirection: "column",
+                            justifyContent: "center",
                             alignItems: "center",
                             gap: 4,
+                            flex: 1,
                         }}
                     >
                         <IconButton>
@@ -142,7 +146,7 @@ const ImagePreviewScreen = () => {
                                 tintColor={colors.text}
                             />
                         </IconButton>
-                        <ThemedText>Remove</ThemedText>
+                        <ThemedText type="subtitle">Remove</ThemedText>
                     </View>
                 </View>
             </BlurHeader>
