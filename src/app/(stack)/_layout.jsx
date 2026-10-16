@@ -49,7 +49,7 @@ const StackLayout = () => {
                         headerTitle: "",
                         headerTransparent: true,
                         animation: "fade",
-                        gestureEnabled: true,
+                        gestureEnabled: false,
                     }}
                 />
 

@@ -36,7 +36,16 @@ const GeneratedImages = () => {
                             height: 150,
                         }}
                     >
-                        <Link href={`/image/imagepreview/${item.id}`} asChild>
+                        <Link
+                            push
+                            href={{
+                                pathname: "/image/imagepreview/[id]",
+                                params: {
+                                    id: item.id,
+                                },
+                            }}
+                            asChild
+                        >
                             <Link.Trigger>
                                 <Pressable style={styles.tile}>
                                     <Image
@@ -56,7 +65,7 @@ const GeneratedImages = () => {
                                             width: "100%",
                                             height: "100%",
                                         }}
-                                        cachePolicy={"memory-disk"}
+                                        cachePolicy="memory-disk"
                                     />
                                 </View>
                             </Link.Preview>

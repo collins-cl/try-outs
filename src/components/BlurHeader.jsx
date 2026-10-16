@@ -10,6 +10,7 @@ export default function BlurHeader({
     blurIntensity = 5,
     top = false,
     bottom = false,
+    style,
 }) {
     const insets = useSafeAreaInsets();
     const { colors } = useTheme();
@@ -25,6 +26,7 @@ export default function BlurHeader({
                     top: top && 0,
                     bottom: bottom && 0,
                 },
+                style,
             ]}
             pointerEvents="box-none"
         >
